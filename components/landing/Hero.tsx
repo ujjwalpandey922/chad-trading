@@ -80,7 +80,7 @@ export function Hero() {
           alt=""
           width={900}
           height={600}
-          className="h-auto w-full max-w-md object-contain object-bottom sm:max-w-lg"
+          className="h-auto w-full max-w-md object-contain object-bottom sm:max-w-lg animate-[float_4s_ease-in-out_infinite]"
           priority
         />
       </div>

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const APP_STORE_URL =
+export const APP_STORE_URL =
   "https://apps.apple.com/us/app/chadwallet/id6757367474";
-const PLAY_STORE_URL =
+export const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=xyz.chadwallet.www";
 
 export function Navbar() {
