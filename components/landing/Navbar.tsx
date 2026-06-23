@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePrivy } from "@privy-io/react-auth";
 
 export const APP_STORE_URL =
   "https://apps.apple.com/us/app/chadwallet/id6757367474";
@@ -7,6 +10,8 @@ export const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=xyz.chadwallet.www";
 
 export function Navbar() {
+  const { login, logout, authenticated } = usePrivy();
+
   return (
     <header className="absolute inset-x-0 top-0 z-20 p-4 max-sm:hidden">
       <nav className="mx-auto flex items-center justify-between gap-4">
@@ -78,16 +83,31 @@ export function Navbar() {
             </div>
           </a>
 
-          <button
-            type="button"
-            className="bg-btn-login rounded-lg px-5 py-2.5 text-base font-bold text-white shadow-sm ring-1 ring-white/5 transition hover:bg-black"
-            style={{
-              textShadow:
-                "1.5px 0px 0px var(--google-red), -1.5px 0px 0px var(--google-blue)",
-            }}
-          >
-            Login
-          </button>
+          {authenticated ? (
+            <button
+              onClick={logout}
+              type="button"
+              className="bg-btn-login rounded-lg px-5 py-2.5 text-base font-bold text-white shadow-sm ring-1 ring-white/5 transition hover:bg-black cursor-pointer"
+              style={{
+                textShadow:
+                  "1.5px 0px 0px var(--google-red), -1.5px 0px 0px var(--google-blue)",
+              }}
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              onClick={login}
+              type="button"
+              className="bg-btn-login rounded-lg px-5 py-2.5 text-base font-bold text-white shadow-sm ring-1 ring-white/5 transition hover:bg-black cursor-pointer"
+              style={{
+                textShadow:
+                  "1.5px 0px 0px var(--google-red), -1.5px 0px 0px var(--google-blue)",
+              }}
+            >
+              Login
+            </button>
+          )}
         </div>
       </nav>
     </header>
