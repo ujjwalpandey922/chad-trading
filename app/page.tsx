@@ -7,7 +7,7 @@ import { Footer } from "@/components/landing/Footer";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-surface">
+    <div className="bg-surface relative min-h-screen">
       <Navbar />
       <Hero />
       <CrossPlatformSection />

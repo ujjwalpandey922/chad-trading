@@ -7,7 +7,7 @@ const PLAY_STORE_URL =
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-start overflow-hidden bg-surface px-4 pb-48 pt-28 sm:px-8 sm:pb-56 sm:pt-32">
+    <section className="bg-surface relative flex min-h-screen flex-col items-center justify-start overflow-hidden px-4 pt-28 pb-48 sm:px-8 sm:pt-32 sm:pb-56">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -15,7 +15,7 @@ export function Hero() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-linear-to-b from-surface/30 via-transparent to-surface"
+        className="from-surface/30 to-surface pointer-events-none absolute inset-0 bg-linear-to-b via-transparent"
       />
 
       <div className="relative z-10 flex max-w-3xl flex-col items-center text-center">
@@ -27,23 +27,23 @@ export function Hero() {
           className="mb-2 size-14 rounded-2xl sm:size-18"
           priority
         />
-        <h1 className="text-5xl mb-2 font-bold tracking-tight text-white sm:text-7xl md:text-8xl">
+        <h1 className="mb-2 text-5xl font-bold tracking-tight text-white sm:text-7xl md:text-8xl">
           ChadWallet
         </h1>
         <p className="text-xl font-semibold text-white sm:text-2xl md:text-3xl">
           where traders become legends.
         </p>
-        <p className="max-w-lg text-base text-muted sm:text-lg">
+        <p className="text-muted max-w-lg text-base sm:text-lg">
           From memecoins to viral tokens, trade any crypto in seconds.
         </p>
 
-        <div className="mt-4 flex w-full flex-col sm:flex-row gap-3 sm:mt-6 sm:justify-center z-10 relative">
+        <div className="relative z-10 mt-4 flex w-full flex-col gap-3 sm:mt-6 sm:flex-row sm:justify-center">
           <Link
             href="#"
-            className="group flex items-center justify-center overflow-hidden bg-btn-primary hover:bg-btn-primary-hover backdrop-blur-md transition-colors duration-150 py-2.5 w-full sm:w-48 rounded-xl text-base font-bold border border-white/10 z-10 pointer-events-auto"
+            className="group bg-btn-primary hover:bg-btn-primary-hover pointer-events-auto z-10 flex w-full items-center justify-center overflow-hidden rounded-xl border border-white/10 py-2.5 text-base font-bold backdrop-blur-md transition-colors duration-150 max-sm:hidden sm:w-48"
           >
             <span>Start trading</span>
-            <div className="flex items-center overflow-hidden w-0 opacity-0 group-hover:w-7 group-hover:opacity-100 transition-all duration-150 ease-out">
+            <div className="flex w-0 items-center overflow-hidden opacity-0 transition-all duration-150 ease-out group-hover:w-7 group-hover:opacity-100">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -65,9 +65,9 @@ export function Hero() {
             href={APP_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-center overflow-hidden bg-white/10 hover:bg-white/20 backdrop-blur-md transition-colors duration-150 border border-white/10 rounded-xl text-base font-bold w-full sm:w-48 py-2.5 z-10 pointer-events-auto"
+            className="group pointer-events-auto z-10 flex w-full items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/10 py-2.5 text-base font-bold backdrop-blur-md transition-colors duration-150 hover:bg-white/20 max-sm:mx-auto sm:w-48"
           >
-            <div className="flex items-center overflow-hidden w-0 opacity-0 group-hover:w-7 group-hover:opacity-100 transition-all duration-150 ease-out">
+            <div className="flex w-0 items-center overflow-hidden opacity-0 transition-all duration-150 ease-out group-hover:w-7 group-hover:opacity-100">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -88,25 +88,6 @@ export function Hero() {
             <span>Download app</span>
           </a>
         </div>
-
-        <div className="mt-6 flex gap-3 sm:hidden">
-          <a
-            href={APP_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg bg-black/80 px-3 py-2 text-xs font-medium text-white ring-1 ring-white/10"
-          >
-            App Store
-          </a>
-          <a
-            href={PLAY_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg bg-black/80 px-3 py-2 text-xs font-medium text-white ring-1 ring-white/10"
-          >
-            Google Play
-          </a>
-        </div>
       </div>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-4 z-1 flex justify-center">
@@ -115,7 +96,7 @@ export function Hero() {
           alt=""
           width={700}
           height={400}
-          className="h-auto w-full max-w-md object-contain object-bottom animate-[float_4s_ease-in-out_infinite]"
+          className="h-auto w-full max-w-md animate-[float_4s_ease-in-out_infinite] object-contain object-bottom"
           priority
         />
       </div>

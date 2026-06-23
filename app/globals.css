@@ -9,12 +9,12 @@
   --primary-hover: #4f46e5;
 
   /* CTA button — semi-transparent indigo */
-  --btn-primary: #606AF780;
-  --btn-primary-hover: #606AF7CC;
+  --btn-primary: #606af780;
+  --btn-primary-hover: #606af7cc;
 
   /* Store badge buttons in Navbar */
   --btn-badge: #536173;
-  --btn-badge-hover: #606E82;
+  --btn-badge-hover: #606e82;
 
   /* Login button in Navbar */
   --btn-login: #111216;
@@ -49,6 +49,11 @@ body {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
 }

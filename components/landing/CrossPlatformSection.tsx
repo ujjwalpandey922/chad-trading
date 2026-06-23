@@ -2,28 +2,55 @@ import Image from "next/image";
 
 export function CrossPlatformSection() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center max-w-4xl mx-auto mb-16">
-          <h3 className="text-primary font-bold tracking-[0.2em] uppercase text-sm mb-4">
+    <section className="relative overflow-hidden py-24 md:py-32">
+      <div className="relative z-10 container mx-auto px-4 md:px-6">
+        {/* Desktop Header */}
+        <div className="mx-auto hidden max-w-4xl text-center sm:block">
+          <h3 className="text-primary mb-4 text-sm font-bold tracking-[0.2em] uppercase">
             Now Available on Web
           </h3>
-          <h2 className="text-[60px] leading-14 tracking-tight text-center">
+          <h2 className="text-center text-[60px] leading-14 tracking-tight">
             trade from anywhere.
             <br />
             never lose a beat.
           </h2>
-          <p className="text-white/70 text-[22px] tracking-tight mt-4">
+          <p className="mt-4 text-[22px] tracking-tight text-white/70">
             Open a trade on your phone, close it on your desktop &mdash; all in
             one app.
           </p>
         </div>
 
-        {/* Mockups Container */}
-        <div className="relative mx-auto mt-12 flex justify-center">
-          {/* Background Glow */}
+        {/* Mobile Layout (Image at top, text at bottom) */}
+        <div className="flex flex-col items-center sm:hidden">
+          {/* Mobile Image */}
+          <div className="relative -mb-10 aspect-4/5 w-full max-w-[380px]">
+            <Image
+              src="/available/fomo-mobile-app.webp"
+              alt="ChadWallet Mobile App"
+              fill
+              className="object-contain"
+              priority
+              sizes="100vw"
+            />
+          </div>
 
-          <div className="relative w-full  sm:aspect-video md:aspect-16/10 lg:aspect-16/10 z-10">
+          {/* Mobile Text */}
+          <div className="relative z-20 px-4 text-center">
+            <h2 className="text-center text-4xl leading-10 font-extrabold tracking-tighter text-white">
+              trade from anywhere.
+              <br />
+              never lose a beat.
+            </h2>
+            <p className="mt-3 text-base leading-relaxed font-medium tracking-tight text-[#94A3B8]">
+              Pick up a trade on your phone, close it on your desktop &mdash;
+              all in one app.
+            </p>
+          </div>
+        </div>
+
+        {/* Desktop Mockups Container */}
+        <div className="relative mx-auto hidden justify-center sm:flex">
+          <div className="relative z-10 aspect-4/3 w-full">
             {/* Desktop Mockup */}
             <Image
               src="/available/desktop.webp"
@@ -35,7 +62,7 @@ export function CrossPlatformSection() {
             />
 
             {/* Mobile Mockup (layered over desktop, offset to the right and bottom) */}
-            <div className="w-[28vw] absolute right-10 top-40 animate-[float_4s_ease-in-out_infinite] z-20 aspect-1/2 drop-shadow-2xl">
+            <div className="absolute top-40 right-10 z-20 aspect-1/2 w-[28vw] animate-[float_4s_ease-in-out_infinite] drop-shadow-2xl">
               <Image
                 src="/available/desktop-phone.webp"
                 alt="ChadWallet Mobile Interface"

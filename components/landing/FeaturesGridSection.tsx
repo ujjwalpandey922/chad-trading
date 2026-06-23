@@ -38,39 +38,39 @@ export function FeaturesGridSection() {
     <section className="pb-4">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
-        <div className="mb-16 max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-4">
+        <div className="mb-16 max-w-2xl max-sm:hidden">
+          <h2 className="text-foreground mb-4 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
             never miss out again
           </h2>
-          <p className="text-lg md:text-xl text-muted font-medium">
+          <p className="text-muted text-lg font-medium md:text-xl">
             the only social-first trading app
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {cards.map((card, idx) => (
             <div
               key={idx}
-              className="bg-white/3 border border-white/5 rounded-3xl p-6 md:p-8 flex flex-col min-h-[400px] md:min-h-[450px] overflow-hidden group"
+              className="group flex min-h-[400px] flex-col overflow-hidden rounded-3xl border border-white/5 bg-white/3 p-6 md:min-h-[450px] md:p-8"
             >
               {/* Card Text Content */}
-              <div className="mb-8 z-10 relative">
-                <div className="text-primary text-xs font-bold uppercase tracking-widest mb-3">
+              <div className="relative z-10 sm:mb-8">
+                <div className="text-primary mb-3 text-xs font-bold tracking-widest uppercase">
                   {card.eyebrow}
                 </div>
-                <h3 className="text-2xl font-semibold leading-tight tracking-tight text-foreground">
+                <h3 className="text-foreground text-2xl leading-tight font-semibold tracking-tight">
                   {card.title}
                 </h3>
               </div>
 
               {/* Card Image */}
-              <div className="relative flex-1 w-full min-h-[220px] mt-auto flex items-end">
+              <div className="relative mt-auto flex w-full flex-1 items-end sm:min-h-[220px]">
                 <Image
                   src={card.image}
                   alt={card.title}
                   fill
-                  className="object-contain object-bottom drop-shadow-xl transition-transform duration-500 ease-out group-hover:scale-[1.03] group-hover:-translate-y-2"
+                  className="object-contain object-center drop-shadow-xl transition-transform duration-500 ease-out group-hover:-translate-y-2 group-hover:scale-[1.03] sm:object-bottom"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
