@@ -35,7 +35,7 @@ const cards = [
 
 export function FeaturesGridSection() {
   return (
-    <section className="py-4 md:py-8">
+    <section className="pb-4">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
         <div className="mb-16 max-w-2xl">

@@ -8,12 +8,12 @@ export function CrossPlatformSection() {
           <h3 className="text-primary font-bold tracking-[0.2em] uppercase text-sm mb-4">
             Now Available on Web
           </h3>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-foreground mb-6 leading-tight">
+          <h2 className="text-[60px] leading-14 tracking-tight text-center">
             trade from anywhere.
             <br />
             never lose a beat.
           </h2>
-          <p className="text-lg md:text-xl text-muted font-medium max-w-2xl mx-auto">
+          <p className="text-white/70 text-[22px] tracking-tight mt-4">
             Open a trade on your phone, close it on your desktop &mdash; all in
             one app.
           </p>
@@ -35,7 +35,7 @@ export function CrossPlatformSection() {
             />
 
             {/* Mobile Mockup (layered over desktop, offset to the right and bottom) */}
-            <div className="w-[28vw] absolute -right-22 bottom-30 animate-[float_4s_ease-in-out_infinite] z-20 aspect-1/2 drop-shadow-2xl">
+            <div className="w-[28vw] absolute right-10 top-40 animate-[float_4s_ease-in-out_infinite] z-20 aspect-1/2 drop-shadow-2xl">
               <Image
                 src="/available/desktop-phone.webp"
                 alt="ChadWallet Mobile Interface"

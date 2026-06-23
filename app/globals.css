@@ -7,6 +7,21 @@
   --muted: #a1a1aa;
   --primary: #6366f1;
   --primary-hover: #4f46e5;
+
+  /* CTA button — semi-transparent indigo */
+  --btn-primary: #606AF780;
+  --btn-primary-hover: #606AF7CC;
+
+  /* Store badge buttons in Navbar */
+  --btn-badge: #536173;
+  --btn-badge-hover: #606E82;
+
+  /* Login button in Navbar */
+  --btn-login: #111216;
+
+  /* Brand / Logo Accent Colors */
+  --google-red: #ea4335;
+  --google-blue: #4b8bf5;
 }
 
 @theme inline {
@@ -16,6 +31,13 @@
   --color-muted: var(--muted);
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
+  --color-btn-primary: var(--btn-primary);
+  --color-btn-primary-hover: var(--btn-primary-hover);
+  --color-btn-badge: var(--btn-badge);
+  --color-btn-badge-hover: var(--btn-badge-hover);
+  --color-btn-login: var(--btn-login);
+  --color-google-red: var(--google-red);
+  --color-google-blue: var(--google-blue);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

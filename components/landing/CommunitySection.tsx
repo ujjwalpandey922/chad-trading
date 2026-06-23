@@ -32,20 +32,26 @@ export function CommunitySection() {
               join 500,000 traders making their name on ChadWallet
             </p>
 
-            <div className="pt-6 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <div className="pt-6 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <Link
                 href="#"
-                className="inline-flex h-12 items-center justify-center rounded-xl bg-primary px-8 text-base font-semibold text-white transition hover:bg-primary-hover shadow-lg shadow-primary/25 pointer-events-auto"
+                className="group flex items-center justify-center overflow-hidden bg-btn-primary hover:bg-btn-primary-hover backdrop-blur-md transition-colors duration-150 py-3 w-48 rounded-xl text-lg font-bold border border-white/10 z-10 pointer-events-auto"
               >
-                Start trading
+                <span>Start trading</span>
+                <div className="flex items-center overflow-hidden w-0 opacity-0 group-hover:w-7 group-hover:opacity-100 transition-all duration-150 ease-out">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </div>
               </Link>
               <a
                 href={APP_STORE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 items-center justify-center rounded-xl bg-white/10 backdrop-blur-md px-8 text-base font-semibold text-white ring-1 ring-white/20 transition hover:bg-white/20 pointer-events-auto"
+                className="group flex items-center justify-center overflow-hidden bg-white/10 hover:bg-white/20 backdrop-blur-md transition-colors duration-150 border border-white/10 rounded-xl text-lg font-bold w-48 py-3 z-10 pointer-events-auto"
               >
-                Download app
+                <div className="flex items-center overflow-hidden w-0 opacity-0 group-hover:w-7 group-hover:opacity-100 transition-all duration-150 ease-out">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 shrink-0"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                </div>
+                <span>Download app</span>
               </a>
             </div>
           </div>
