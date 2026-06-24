@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { StartTradingButton } from "@/components/landing/StartTradingButton";
 import { APP_STORE_URL } from "./Navbar";
 
 export function CommunitySection() {
@@ -35,29 +35,7 @@ export function CommunitySection() {
             </p>
 
             <div className="flex w-full flex-col gap-3 pt-6 sm:w-auto sm:flex-row">
-              <Link
-                href="#"
-                className="group bg-btn-primary hover:bg-btn-primary-hover pointer-events-auto z-10 flex w-48 items-center justify-center overflow-hidden rounded-xl border border-white/10 py-3 text-lg font-bold backdrop-blur-md transition-colors duration-150 max-sm:hidden"
-              >
-                <span>Start trading</span>
-                <div className="flex w-0 items-center overflow-hidden opacity-0 transition-all duration-150 ease-out group-hover:w-7 group-hover:opacity-100">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="ml-2 shrink-0"
-                  >
-                    <path d="M5 12h14" />
-                    <path d="m12 5 7 7-7 7" />
-                  </svg>
-                </div>
-              </Link>
+              <StartTradingButton className="group bg-btn-primary hover:bg-btn-primary-hover pointer-events-auto z-10 flex w-48 cursor-pointer items-center justify-center overflow-hidden rounded-xl border border-white/10 py-3 text-lg font-bold backdrop-blur-md transition-colors duration-150 max-sm:hidden" />
               <a
                 href={APP_STORE_URL}
                 target="_blank"

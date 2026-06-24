@@ -8,7 +8,7 @@ export default function PrivyProviderWrapper({
   children: React.ReactNode;
 }) {
   const appId = process.env.NEXT_PUBLIC_PRIVY_APP_ID || "";
-  console.log(appId);
+
   return (
     <PrivyProvider
       appId={appId}
