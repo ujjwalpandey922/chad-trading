@@ -87,7 +87,7 @@ export function Navbar() {
             <button
               onClick={logout}
               type="button"
-              className="bg-btn-login rounded-lg px-5 py-2.5 text-base font-bold text-white shadow-sm ring-1 ring-white/5 transition hover:bg-black cursor-pointer"
+              className="bg-btn-login cursor-pointer rounded-lg px-5 py-2.5 text-base font-bold text-white shadow-sm ring-1 ring-white/5 transition hover:bg-black"
               style={{
                 textShadow:
                   "1.5px 0px 0px var(--google-red), -1.5px 0px 0px var(--google-blue)",
@@ -99,7 +99,7 @@ export function Navbar() {
             <button
               onClick={login}
               type="button"
-              className="bg-btn-login rounded-lg px-5 py-2.5 text-base font-bold text-white shadow-sm ring-1 ring-white/5 transition hover:bg-black cursor-pointer"
+              className="bg-btn-login cursor-pointer rounded-lg px-5 py-2.5 text-base font-bold text-white shadow-sm ring-1 ring-white/5 transition hover:bg-black"
               style={{
                 textShadow:
                   "1.5px 0px 0px var(--google-red), -1.5px 0px 0px var(--google-blue)",

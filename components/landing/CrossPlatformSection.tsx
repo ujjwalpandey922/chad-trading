@@ -30,7 +30,7 @@ export function CrossPlatformSection() {
               fill
               className="object-contain"
               priority
-              sizes="100vw"
+              sizes="380px"
             />
           </div>
 

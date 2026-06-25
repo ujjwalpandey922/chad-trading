@@ -88,3 +88,24 @@ body {
 .hover-pause:hover .animate-marquee-reverse {
   animation-play-state: paused;
 }
+
+/* Custom scrollbar styling matching the dark theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(7, 5, 16, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3); /* Semi-transparent Indigo */
+  border-radius: 3px;
+  border: 1px solid #070510;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.6); /* Vibrant Indigo on hover */
+}
+

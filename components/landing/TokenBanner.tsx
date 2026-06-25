@@ -12,7 +12,7 @@ interface TokenBannerProps {
 
 function TokenBannerSkeleton() {
   return (
-    <div className="relative w-full overflow-hidden border-y border-white/5 bg-black/20 py-3.5 backdrop-blur-xs">
+    <div className="relative w-full overflow-hidden border-y border-white/5 bg-transparent py-3.5 backdrop-blur-xs">
       <div className="flex animate-pulse justify-around gap-8 px-4">
         {[...Array(6)].map((_, i) => (
           <div key={i} className="flex items-center gap-3">
@@ -30,7 +30,11 @@ export function TokenBanner({
   direction = "left",
   speed = "medium",
 }: TokenBannerProps) {
-  const { data: tokens, isLoading, isError } = useQuery<Token[]>({
+  const {
+    data: tokens,
+    isLoading,
+    isError,
+  } = useQuery<Token[]>({
     queryKey: ["trendingTokens"],
     queryFn: async () => {
       const res = await fetch("/api/tokens");
@@ -46,10 +50,9 @@ export function TokenBanner({
     return <TokenBannerSkeleton />;
   }
 
-  const tokenList =
-    isError || !tokens?.length ? FALLBACK_TOKENS : tokens;
+  const tokenList = isError || !tokens?.length ? FALLBACK_TOKENS : tokens;
 
-  const marqueeItems = [...tokenList, ...tokenList];
+  const marqueeItems = [...tokenList];
 
   const speedClass =
     speed === "fast"
@@ -59,7 +62,7 @@ export function TokenBanner({
         : "[animation-duration:35s]";
 
   return (
-    <div className="hover-pause relative w-full overflow-hidden border-y border-white/5 bg-black/30 py-3.5 backdrop-blur-md">
+    <div className="hover-pause relative w-full overflow-hidden border-y border-white/5 bg-transparent py-3.5 backdrop-blur-md">
       <div
         className={`flex w-max shrink-0 flex-nowrap items-center ${
           direction === "left" ? "animate-marquee" : "animate-marquee-reverse"

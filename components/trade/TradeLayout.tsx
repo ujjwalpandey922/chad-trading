@@ -131,8 +131,7 @@ export default function TradeLayout({
                   Interactive Price Chart
                 </h4>
                 <p className="mt-1 max-w-sm text-xs text-white/40">
-                  Candlestick intervals (1H, 4H, 1D) with real-time trade
-                  overlay coming in Phase 2.
+                  Candlestick intervals (1H, 4H, 1D) with real-time trade overlay.
                 </p>
               </div>
             </div>
@@ -196,16 +195,6 @@ export default function TradeLayout({
               </div>
             </div>
 
-            {/* Coming Soon Notice */}
-            <div className="rounded-lg border border-yellow-500/20 bg-yellow-500/5 p-3 text-center">
-              <span className="mb-0.5 block text-[11px] font-bold text-yellow-400">
-                Swap Integration Coming
-              </span>
-              <p className="text-[10px] leading-relaxed text-white/60">
-                Jupiter aggregator quote engine + Privy transaction signing
-                arriving in Phase 4.
-              </p>
-            </div>
 
             {/* Connect Wallet Trigger */}
             <button

@@ -7,7 +7,7 @@ const PLAY_STORE_URL =
 
 export function Hero() {
   return (
-    <section className="bg-surface relative flex min-h-screen flex-col items-center justify-start overflow-hidden px-4 pt-28 pb-48 sm:px-8 sm:pt-32 sm:pb-56">
+    <section className="bg-surface relative flex min-h-screen flex-col items-center justify-start overflow-hidden px-4 pt-30 pb-48 sm:px-8 sm:pt-36 sm:pb-56">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -19,14 +19,6 @@ export function Hero() {
       />
 
       <div className="relative z-10 flex max-w-3xl flex-col items-center text-center">
-        <Image
-          src="/brand/dark-logo.png"
-          alt=""
-          width={72}
-          height={72}
-          className="mb-2 size-14 rounded-2xl sm:size-18"
-          priority
-        />
         <h1 className="mb-2 text-5xl font-bold tracking-tight text-white sm:text-7xl md:text-8xl">
           ChadWallet
         </h1>
