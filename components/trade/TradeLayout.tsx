@@ -2,10 +2,26 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import TrendingSidebar from "./TrendingSidebar";
 import TokenHeader from "./TokenHeader";
 import HoldersTable from "./HoldersTable";
 import LiveTradesFeed from "./LiveTradesFeed";
+
+const TradingViewChart = dynamic(
+  () => import("./TradingViewChart"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="relative flex h-[350px] w-full flex-col items-center justify-center rounded-xl border border-dashed border-white/10 bg-black/40 p-6 text-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+          <span className="text-xs font-medium text-white/50">Loading chart...</span>
+        </div>
+      </div>
+    ),
+  }
+);
 
 interface TradeLayoutProps {
   tokenId: string;
@@ -105,36 +121,7 @@ export default function TradeLayout({
 
           <div className="space-y-6 p-4 sm:p-6">
             {/* Chart Area Placeholder */}
-            <div className="relative flex h-[350px] w-full flex-col items-center justify-center overflow-hidden rounded-xl border border-dashed border-white/10 bg-black/40 p-6 text-center">
-              {/* Starry spacebg for depth */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
-                style={{ backgroundImage: "url(/landing/space-bg.webp)" }}
-              />
-              <div className="relative z-10 flex flex-col items-center">
-                <div className="mb-3 flex h-12 w-12 animate-pulse items-center justify-center rounded-full border border-yellow-400/20 bg-yellow-400/10 text-yellow-400">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M3 3v18h18" />
-                    <path d="m19 9-5 5-4-4-3 3" />
-                  </svg>
-                </div>
-                <h4 className="text-base font-extrabold text-white">
-                  Interactive Price Chart
-                </h4>
-                <p className="mt-1 max-w-sm text-xs text-white/40">
-                  Candlestick intervals (1H, 4H, 1D) with real-time trade overlay.
-                </p>
-              </div>
-            </div>
+            <TradingViewChart address={tokenId} />
 
             {/* Tables Area */}
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">

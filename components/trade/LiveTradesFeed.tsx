@@ -1,13 +1,17 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { TokenTrade } from "@/lib/birdeye/client";
+import { formatTime } from "@/lib/utils";
 
 interface LiveTradesFeedProps {
   address: string;
 }
 
 export default function LiveTradesFeed({ address }: LiveTradesFeedProps) {
+  const [activeTrades, setActiveTrades] = useState<TokenTrade[]>([]);
+
   const {
     data: trades,
     isLoading,
@@ -19,18 +23,25 @@ export default function LiveTradesFeed({ address }: LiveTradesFeedProps) {
       if (!res.ok) throw new Error("Failed to fetch token trades");
       return res.json();
     },
-    refetchInterval: 15 * 1000, // rapid 15s updates for trades feed
+    refetchInterval: 2000,
   });
 
-  const formatTime = (unixTime: number) => {
-    const date = new Date(unixTime * 1000);
-    return date.toLocaleTimeString(undefined, {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
+  // Keep only recent trades from API
+  useEffect(() => {
+    if (!trades?.length) return;
+
+    setActiveTrades((prev) => {
+      const merged = [...trades, ...prev];
+
+      const unique = Array.from(
+        new Map(merged.map((trade) => [trade.txHash, trade])).values()
+      );
+
+      unique.sort((a, b) => b.blockUnixTime - a.blockUnixTime);
+
+      return unique.slice(0, 25);
     });
-  };
+  }, [trades]);
 
   return (
     <div className="rounded-xl border border-white/10 bg-black/20 p-4 backdrop-blur-md">
@@ -50,7 +61,7 @@ export default function LiveTradesFeed({ address }: LiveTradesFeedProps) {
         Live Trades
       </h3>
 
-      <div className="overflow-x-auto">
+      <div className="max-h-[60vh] overflow-x-auto overflow-y-auto">
         {isLoading ? (
           <div className="space-y-3 py-2">
             {[...Array(5)].map((_, i) => (
@@ -69,9 +80,9 @@ export default function LiveTradesFeed({ address }: LiveTradesFeedProps) {
           <div className="py-4 text-center text-xs text-rose-400">
             Failed to load trades feed
           </div>
-        ) : trades && trades.length > 0 ? (
+        ) : activeTrades.length > 0 ? (
           <table className="w-full border-collapse text-left">
-            <thead>
+            <thead className="sticky top-0 bg-[#0b0b0b]/95 backdrop-blur-md">
               <tr className="border-b border-white/5 text-[10px] font-bold tracking-wider text-white/40 uppercase">
                 <th className="pb-2 font-semibold">Time</th>
                 <th className="pb-2 font-semibold">Type</th>
@@ -81,14 +92,17 @@ export default function LiveTradesFeed({ address }: LiveTradesFeedProps) {
                 <th className="pb-2 text-right font-semibold">TX</th>
               </tr>
             </thead>
+
             <tbody className="divide-y divide-white/3 text-xs">
-              {trades.map((trade) => {
+              {activeTrades.map((trade) => {
                 const isBuy = trade.side === "buy";
+
                 return (
                   <tr key={trade.txHash} className="hover:bg-white/2">
                     <td className="py-2.5 font-mono text-white/50">
                       {formatTime(trade.blockUnixTime)}
                     </td>
+
                     <td className="py-2.5 font-bold">
                       <span
                         className={`rounded px-1.5 py-0.5 text-[10px] font-extrabold uppercase ${
@@ -100,6 +114,7 @@ export default function LiveTradesFeed({ address }: LiveTradesFeedProps) {
                         {trade.side}
                       </span>
                     </td>
+
                     <td className="py-2.5 text-right font-mono text-white/80">
                       $
                       {trade.priceUSD < 0.01
@@ -109,6 +124,7 @@ export default function LiveTradesFeed({ address }: LiveTradesFeedProps) {
                             maximumFractionDigits: 4,
                           })}
                     </td>
+
                     <td className="py-2.5 text-right font-mono text-white/80">
                       {trade.fromSymbol === "USDC" || trade.fromSymbol === "SOL"
                         ? trade.toAmount.toLocaleString(undefined, {
@@ -118,6 +134,7 @@ export default function LiveTradesFeed({ address }: LiveTradesFeedProps) {
                             maximumFractionDigits: 2,
                           })}
                     </td>
+
                     <td className="py-2.5 text-right font-mono font-bold text-white/90">
                       $
                       {trade.volumeUSD.toLocaleString(undefined, {
@@ -125,6 +142,7 @@ export default function LiveTradesFeed({ address }: LiveTradesFeedProps) {
                         maximumFractionDigits: 2,
                       })}
                     </td>
+
                     <td className="py-2.5 text-right font-mono text-white/40">
                       <a
                         href={`https://solscan.io/tx/${trade.txHash}`}
@@ -143,7 +161,7 @@ export default function LiveTradesFeed({ address }: LiveTradesFeedProps) {
           </table>
         ) : (
           <div className="py-4 text-center text-xs text-white/40">
-            No trades found
+            No recent trades
           </div>
         )}
       </div>
