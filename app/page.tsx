@@ -11,7 +11,7 @@ export default function Home() {
     <div className="bg-surface relative min-h-screen">
       <Navbar />
       {/* Top Banner - positioned nicely below absolute navbar on desktop, normal flow on mobile */}
-      <div className="absolute z-30 max-w-full overflow-hidden pt-0 sm:pt-18">
+      <div className="absolute z-30 w-full max-w-full overflow-hidden pt-0 sm:top-18">
         <TokenBanner direction="left" speed="medium" />
       </div>
       <Hero />
