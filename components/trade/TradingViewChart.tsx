@@ -16,7 +16,7 @@ interface TradingViewChartProps {
 }
 
 const TIMEFRAMES = [
-  { label: "5M", value: "5m" },
+  // { label: "5M", value: "5m" },
   { label: "1H", value: "1H" },
   { label: "4H", value: "4H" },
   { label: "1D", value: "1D" },

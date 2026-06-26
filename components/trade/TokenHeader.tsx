@@ -47,10 +47,10 @@ export default function TokenHeader({
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
+  console.log({ token });
   return (
     <div className="border-b border-white/10 bg-black/20 p-4 backdrop-blur-md sm:p-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col flex-wrap justify-center gap-4 sm:flex-row sm:items-center sm:justify-between">
         {/* Token Info Identity */}
         <div className="flex min-w-0 items-center gap-4">
           {displayLogo ? (
@@ -151,23 +151,24 @@ export default function TokenHeader({
           </div>
 
           {/* Market Cap */}
-          <div className="border-l border-white/10 pl-4 text-left sm:pl-6 sm:text-right">
-            <div className="text-xs font-bold tracking-wider text-white/40 uppercase">
-              Market Cap
-            </div>
-            {isLoading ? (
-              <div className="mt-1 h-6 w-20 animate-pulse rounded bg-white/10" />
-            ) : token?.mc ? (
-              <div className="mt-0.5 font-mono text-base font-bold text-white/90">
-                $
-                {token.mc.toLocaleString(undefined, {
-                  maximumFractionDigits: 0,
-                })}
+          {(isLoading || (token?.mc ?? 0) > 0) && (
+            <div className="border-l border-white/10 pl-4 text-left sm:pl-6 sm:text-right">
+              <div className="text-xs font-bold tracking-wider text-white/40 uppercase">
+                Market Cap
               </div>
-            ) : (
-              <div className="mt-0.5 text-sm text-white/60">—</div>
-            )}
-          </div>
+
+              {isLoading ? (
+                <div className="mt-1 h-6 w-20 animate-pulse rounded bg-white/10" />
+              ) : (
+                <div className="mt-0.5 font-mono text-base font-bold text-white/90">
+                  $
+                  {token!.mc.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* 24h Volume */}
           <div className="border-l border-white/10 pl-4 text-left sm:pl-6 sm:text-right">

@@ -7,21 +7,21 @@ import TrendingSidebar from "./TrendingSidebar";
 import TokenHeader from "./TokenHeader";
 import HoldersTable from "./HoldersTable";
 import LiveTradesFeed from "./LiveTradesFeed";
+import TradeExecutionPanel from "./TradeExecutionPanel";
 
-const TradingViewChart = dynamic(
-  () => import("./TradingViewChart"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="relative flex h-[350px] w-full flex-col items-center justify-center rounded-xl border border-dashed border-white/10 bg-black/40 p-6 text-center">
-        <div className="flex flex-col items-center gap-3">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
-          <span className="text-xs font-medium text-white/50">Loading chart...</span>
-        </div>
+const TradingViewChart = dynamic(() => import("./TradingViewChart"), {
+  ssr: false,
+  loading: () => (
+    <div className="relative flex h-[350px] w-full flex-col items-center justify-center rounded-xl border border-dashed border-white/10 bg-black/40 p-6 text-center">
+      <div className="flex flex-col items-center gap-3">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+        <span className="text-xs font-medium text-white/50">
+          Loading chart...
+        </span>
       </div>
-    ),
-  }
-);
+    </div>
+  ),
+});
 
 interface TradeLayoutProps {
   tokenId: string;
@@ -133,64 +133,16 @@ export default function TradeLayout({
 
         {/* Right Panel: Buy/Sell Execution */}
         <section
-          className={`w-full shrink-0 flex-col overflow-y-auto bg-black/30 p-4 backdrop-blur-md md:flex md:w-[300px] lg:w-[350px] ${
+          className={`w-full shrink-0 flex-col overflow-y-auto bg-black/30 p-2 backdrop-blur-md md:flex md:w-[300px] lg:w-[350px] ${
             activeTab === "trade" ? "flex" : "hidden md:flex"
           }`}
         >
-          {/* Mock Order Form */}
-          <div className="flex flex-col gap-4 rounded-xl border border-white/10 bg-black/20 p-4">
-            <h3 className="text-sm font-extrabold tracking-wider text-white uppercase">
-              Execute Order
-            </h3>
-
-            {/* Buy / Sell Tabs */}
-            <div className="grid grid-cols-2 gap-2 rounded-lg bg-white/5 p-1">
-              <button className="rounded-md bg-emerald-500 py-1.5 text-xs font-bold text-white shadow-lg">
-                BUY
-              </button>
-              <button className="rounded-md py-1.5 text-xs font-bold text-white/50 transition-colors duration-150 hover:text-white">
-                SELL
-              </button>
-            </div>
-
-            {/* Order Settings / Input fields */}
-            <div className="space-y-3">
-              <div>
-                <label className="text-[10px] font-bold tracking-wider text-white/40 uppercase">
-                  Pay Amount
-                </label>
-                <div className="mt-1 flex items-center justify-between rounded-lg border border-white/10 bg-black/40 px-3 py-2">
-                  <span className="font-mono text-sm font-bold text-white">
-                    0.00
-                  </span>
-                  <span className="text-xs font-bold text-white/60">SOL</span>
-                </div>
-              </div>
-
-              <div>
-                <label className="text-[10px] font-bold tracking-wider text-white/40 uppercase">
-                  Receive Amount
-                </label>
-                <div className="mt-1 flex items-center justify-between rounded-lg border border-white/10 bg-black/40 px-3 py-2">
-                  <span className="font-mono text-sm font-bold text-white">
-                    0.00
-                  </span>
-                  <span className="text-xs font-bold text-white/60">
-                    {initialData?.symbol || "TOKEN"}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-
-            {/* Connect Wallet Trigger */}
-            <button
-              disabled
-              className="hover:bg-yellow-350 mt-2 w-full cursor-not-allowed rounded-xl bg-yellow-400 py-3 text-xs font-bold text-black opacity-50 shadow-lg shadow-yellow-400/10 transition-all duration-150"
-            >
-              Connect Wallet to Trade
-            </button>
-          </div>
+          {/* // MOCK  */}
+          <TradeExecutionPanel
+            tokenSymbol={initialData?.symbol || "TOKEN"}
+            tokenAddress={tokenId}
+            solPrice={123}
+          />
         </section>
       </div>
     </div>
